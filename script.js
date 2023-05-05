@@ -1,7 +1,8 @@
 const animeForm = document.getElementById('anime-form');
 const animeInput = document.getElementById('anime-input');
 const characterList = document.getElementById('character-list');
-
+const divImg = document.getElementById('img');
+const divDesc = document.getElementById('desc');
 
 animeForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -16,6 +17,12 @@ animeForm.addEventListener('submit', async (e) => {
     console.log(data);
 
     const id  = data.data[0].mal_id;
+    const img  = data.data[0].images.jpg.image_url;
+    const desc = data.data[0].synopsis;
+
+    divImg.innerHTML = "<img src='" + img + "' </img>";
+    divDesc.innerHTML = "<p>" + desc + "</p>"
+
     console.log(id);
 
     const url2 = `https://api.jikan.moe/v4/anime/${id}/characters`;
