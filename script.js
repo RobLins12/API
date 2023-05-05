@@ -40,11 +40,13 @@ async function getChars(url){
     
     characters.forEach((character) => {
       const characterItem = document.createElement('li');
-      characterItem.innerText = character.character.name;
-      characterList.appendChild(characterItem);
+      const characterIMG = document.createElement('a');
 
-      const characterIMG = document.createElement('img');
-      characterIMG.src = character.character.url;
-      characterList.appendChild(characterIMG);
+      characterIMG.innerHTML = character.character.name;
+      characterIMG.href = character.character.images.jpg.image_url;
+      characterIMG.target = "_blank";
+      
+      characterList.appendChild(characterItem);
+      characterItem.appendChild(characterIMG);
     });
 }
